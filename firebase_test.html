@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Connection Test</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <h1>Firebase Connection Test</h1>
+    <div id="status">Testing Firebase connection...</div>
+    <div id="results"></div>
+
+    <script>
+        // Firebase configuration from the Flutter app
+        const firebaseConfig = {
+            apiKey: "AIzaSyBdMu5Drpc21T8_GefLqFL_8idBoQSyr5w",
+            authDomain: "prj-mg-coblr-nprd-lap-custjour.firebaseapp.com",
+            projectId: "prj-mg-coblr-nprd-lap-custjour",
+            storageBucket: "prj-mg-coblr-nprd-lap-custjour.firebasestorage.app",
+            messagingSenderId: "350303734023",
+            appId: "1:350303734023:web:7563f5da96d11d087e1da2"
+        };
+
+        // Initialize Firebase
+        try {
+            firebase.initializeApp(firebaseConfig);
+            document.getElementById('status').innerHTML = '✅ Firebase initialized successfully';
+            
+            // Test Firestore
+            const db = firebase.firestore();
+            db.collection('test').doc('connection').get()
+                .then((doc) => {
+                    document.getElementById('results').innerHTML += '<p>✅ Firestore connection successful</p>';
+                })
+                .catch((error) => {
+                    document.getElementById('results').innerHTML += `<p>❌ Firestore error: ${error.message}</p>`;
+                });
+
+            // Test Auth
+            firebase.auth().signInAnonymously()
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    document.getElementById('results').innerHTML += `<p>✅ Anonymous auth successful - User ID: ${user.uid}</p>`;
+                })
+                .catch((error) => {
+                    document.getElementById('results').innerHTML += `<p>❌ Auth error: ${error.message}</p>`;
+                });
+
+        } catch (error) {
+            document.getElementById('status').innerHTML = `❌ Firebase initialization failed: ${error.message}`;
+        }
+    </script>
+</body>
+</html>

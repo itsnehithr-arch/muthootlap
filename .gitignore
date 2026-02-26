@@ -1,0 +1,37 @@
+﻿# Flutter/Dart
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Runner/GeneratedPluginRegistrant.h
+**/ios/Runner/GeneratedPluginRegistrant.m
+
+# Android
+**/android/.gradle/
+**/android/app/build/
+**/android/app/.cxx/
+**/android/.idea/
+**/android/captures/
+**/android/key.properties
+**/android/local.properties
+
+# Build
+**/build/
+**/pubspec.lock
+
+# IDE
+**/.vscode/
+**/.idea/
+**/.classpath
+**/.project
+**/.settings/
+**/.metadata
+
+# Mac
+**/.DS_Store
